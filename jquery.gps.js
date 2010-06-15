@@ -2,7 +2,7 @@
  * jQuery GPS Plugin
  *
  * @author Greg Schoen <greg.schoen@gmail.com>
- * @version 0.1
+ * @version 0.2
  */
 
 (function($) {
@@ -27,6 +27,25 @@
 			)/180);
 
 			success(mi);
+		},
+		/* not 100% sure this works properly, just yet */
+		minMaxRadii:function(loc, mi, success)
+		{
+			lat_mile = 0.0144839 * mi;
+			lon_mile = 0.0190693 * mi;
+
+			var range = {
+				max: {
+					latitude: loc.latitude + lat_mile,
+					longitude: loc.longitude + lon_mile
+				},
+				min: {
+					latitude: loc.latitude - lat_mile,
+					longitude: loc.longitude - lon_mile
+				}
+			}
+
+			success(range);
 		},
 		km2mi:function(km){ return km * 0.621371192; },
 		mi2km:function(mi){ return mi * 1.609344; }

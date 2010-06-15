@@ -11,8 +11,12 @@
 		$.gps.distance(loc1, loc2, function(mi){
 			$("#mi").html(mi);
 		});
-		$.gps.approximate(loc1, loc2, function(mi){
-			$("#approx").html(mi);
+
+		$.gps.minMaxRadii(loc1,5,function(range){
+			$("#min_lat").html(range.min.latitude);
+			$("#max_lat").html(range.max.latitude);
+			$("#min_lon").html(range.min.longitude);
+			$("#max_lon").html(range.max.longitude);
 		});
 	});
 	</script>
@@ -21,5 +25,11 @@
 <body>
 <h1 id="mi"></h1>
 <h1 id="approx"></h1>
+
+<h1 id="min_lat"></h1>
+<h1 id="max_lat"></h1>
+<h1 id="min_lon"></h1>
+<h1 id="max_lon"></h1>
+
 </body>
 </html>
