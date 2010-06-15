@@ -32,7 +32,7 @@
 		minMaxRadii:function(loc, mi, success)
 		{
 			lat_mile = 0.0144839 * mi;
-			lon_mile = 0.0190693 * mi;
+			lon_mile = (0.0144839 / Math.cos(loc.latitude * 3.1415926 / 180 )) * mi;
 
 			var range = {
 				max: {
